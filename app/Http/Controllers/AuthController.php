@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\User; // Importação do modelo User
+use App\Models\User; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +24,7 @@ class AuthController extends Controller
         ]);
     
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended('produtos'); // Redirecionar para dashboard ou página desejada
+            return redirect()->intended('produtos'); 
         }
     
         return back()->withErrors([
@@ -55,7 +55,7 @@ public function register(Request $request)
 
     $user = User::create($validatedData);
 
-    return response()->json($user);
+    // return response()->json($user);
     return redirect()->route('login')->with('success', 'Cadastro realizado com sucesso! Você pode fazer login.');
 }
 
